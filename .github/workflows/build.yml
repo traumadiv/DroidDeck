@@ -35,6 +35,10 @@ concurrency:
   group: build-${{ github.event.pull_request.number || (github.event_name == 'push' && 'main') || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
 
+env:
+  DEBIAN_IMAGE_REPO: Droid-Deck/DroidDeck
+  GAMESCOPE_REPO: Droid-Deck/DroidDeck
+
 jobs:
   source:
     name: Pin source tree
