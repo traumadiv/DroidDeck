@@ -25,7 +25,7 @@ object SettingsReset {
         "upscaler", "upscaleSharpness", "screenEffects", "textureAnisotropy", "textureLodBias",
         "steamDownloadsInBackground", "steam_offline", "bootMovie", "bootMovieSound", "bootMovieVolume", "bootMovieSeconds",
         "bootMovieApplyNext", "bootMovieSteamSeen",
-        "questDefaultsV1",
+        "questDefaultsV1", RetroidPocket5.DEFAULTS_KEY,
     )
 
     internal val SESSION_PREFIXES = listOf(
@@ -63,6 +63,7 @@ object SettingsReset {
         }
 
         QuestExperimental.initialize(context)
+        RetroidPocket5.initialize(context)
         runCatching { OfflineMode.apply(context, LinuxRuntime.rootDir(context)) }
             .onFailure { ok = false; Log.w(TAG, "Could not turn offline mode off", it) }
         runCatching { GameEnvironmentStore.publish(context) }
